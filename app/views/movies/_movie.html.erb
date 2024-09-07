@@ -1,16 +1,18 @@
-<table>
-  <thead id="movie_header">
-    <tr>
-      <th>Title</th>
-      <th>Rating</th>
-      <th>Release date</th>
-    </tr>
-  </thead>
-  <tbody id="movie_data">
-    <tr>
-      <td><%= movie.title %></td>
-      <td><%= movie.rating %></td>
-      <td><%= movie.release_date %></td>
-    </tr>
-  </tbody>
-</table>
+<div id="<%= dom_id movie %>">
+  <table class="th" id="movie">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Rating</th>
+        <th>Release date</th>
+      </tr>
+    </thead>
+    <tbody class="tb" id='movie'>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.release_date %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
