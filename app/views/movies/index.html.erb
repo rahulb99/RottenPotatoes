@@ -5,8 +5,9 @@
 <h1>Movies</h1>
 
 <div id="movies">
+  <%= render movie_header %>
   <% @movies.each do |movie| %>
-    <%= render movie %>
+    <%= render movie_data %>
   <% end %>
 </div>
 
