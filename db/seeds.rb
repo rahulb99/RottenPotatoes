@@ -8,6 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Movie.delete_all
+
 # Seed the RottenPotatoes DB with some movies.
 more_movies = [
   {:title => 'My Neighbor Totoro', :rating => 'G',
@@ -29,5 +31,5 @@ more_movies = [
 ]
 
 more_movies.each do |movie|
-  Movie.find_or_create_by!(movie)
+  Movie.create!(movie)
 end

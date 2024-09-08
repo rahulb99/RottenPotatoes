@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+#movies .highlight.asc{
+    background-color: yellow;
+}
+
+#movies .highlight.desc{
+    background-color: red;
+}
