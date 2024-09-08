@@ -5,51 +5,56 @@
 <h1>Rotten Potatoes</h1>
 
 <div id="movies">
-<table>
-  <thead>
-    <tr>
-      <th class="<%= ("highlight #{@sort_order}" if @highlight == 'title') %>">Title
-        <%= @highlight == 'title' ? (@sort_order == 'asc' ? ' ↑' : ' ↓') : '' %>
-      </th>
-      <th class="<%= ("highlight #{@sort_order}" if @highlight == 'rating') %>">Rating
-      <%= @highlight == 'rating' ? (@sort_order == 'asc' ? ' ↑' : ' ↓') : '' %>
-      </th>
-      <th class="<%= ("highlight #{@sort_order}" if @highlight == 'release_date') %>">Release Date
-      <%= @highlight == 'release_date' ? (@sort_order == 'asc' ? ' ↑' : ' ↓') : '' %>
-      </th>
-      <th>Show Details</th>
-      <th>Edit Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @movies.each do |movie| %>
+  <table>
+    <thead>
       <tr>
-        <td class="<%= ("highlight #{@sort_order}" if @highlight == 'title') %>"><%= movie.title %></td>
-        <td class="<%= ("highlight #{@sort_order}" if @highlight == 'rating') %>"><%= movie.rating %></td>
-        <td class="<%= ("highlight #{@sort_order}" if @highlight == 'release_date') %>"><%= movie.release_date %></td>
-        <td><%= link_to "show movie", movie %></td>
-        <td><%= link_to "edit movie", edit_movie_path(movie) %></td>
+        <th class="<%= ("highlight #{@sort_order}" if @highlight == 'title') %>">Title
+          <%= @highlight == 'title' ? (@sort_order == 'asc' ? ' ↑' : ' ↓') : '' %>
+        </th>
+        <th class="<%= ("highlight #{@sort_order}" if @highlight == 'rating') %>">Rating
+        <%= @highlight == 'rating' ? (@sort_order == 'asc' ? ' ↑' : ' ↓') : '' %>
+        </th>
+        <th class="<%= ("highlight #{@sort_order}" if @highlight == 'release_date') %>">Release Date
+        <%= @highlight == 'release_date' ? (@sort_order == 'asc' ? ' ↑' : ' ↓') : '' %>
+        </th>
+        <th>Show Details</th>
+        <th>Edit Details</th>
       </tr>
-    <% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>Number of movies: <%= @movies.size %></td>
-    </tr>
-  </tfoot>
-</table>
+    </thead>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td class="<%= ("highlight #{@sort_order}" if @highlight == 'title') %>"><%= movie.title %></td>
+          <td class="<%= ("highlight #{@sort_order}" if @highlight == 'rating') %>"><%= movie.rating %></td>
+          <td class="<%= ("highlight #{@sort_order}" if @highlight == 'release_date') %>"><%= movie.release_date %></td>
+          <td><%= link_to "show movie", movie %></td>
+          <td><%= link_to "edit movie", edit_movie_path(movie) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Number of movies: <%= @movies.size %></td>
+      </tr>
+    </tfoot>
+  </table>
 </div>
 
 <div id="sorting">
   <h3>Sort By:</h3>
     <%= form_tag movies_path, method: :get do %>
-    <%= select_tag :sort_field, options_for_select([['Title', 'title'], ['Rating', 'rating'], ['Release Date', 'release_date']]) %>
-    <%= select_tag :sort_order, options_for_select([['Ascending', 'asc'], ['Descending', 'desc']]) %>
-    <%= submit_tag 'Sort' %>
-  <% end %>
+      <p>Column: 
+      <%= select_tag :sort_field, options_for_select([['', ''],['Title', 'title'], ['Rating', 'rating'], ['Release Date', 'release_date']]) %>
+      </p>
+      <p>Order: 
+      <%= select_tag :sort_order, options_for_select([['', ''],['Ascending', 'asc'], ['Descending', 'desc']]) %>
+      </p>
+      <%= submit_tag 'Sort' %>
+    <% end %>
 </div>
 
 <div id="new_movie">
-<h3>Add a new movie:</h3>
-<%= link_to "New movie", new_movie_path %>
+<h3>Add a new movie:
+<%= link_to "Click here", new_movie_path %>
+</h3>
 </div>
